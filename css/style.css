@@ -6,7 +6,9 @@
     --linkedin:#0077b5;
     --facebook:#1877f2;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 
 *{
     box-sizing: border-box;
@@ -21,6 +23,47 @@ body{
 }
 p{
     line-height: 1.5;
+}
+
+.hidden{
+    transform: translateY(100px);
+    
+    transition: transform 1s;
+    opacity: 0;
+    
+}
+.show{
+    transform: translateY(0);
+    
+    
+}
+.overflow{
+    opacity: 0;
+    transition: opacity 2s, transform 1s;
+    transform: translateY(100px);
+}
+.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+.icon{
+    opacity: 0;
+    transform: rotate(60deg);
+    transition: transform 2s;
+}
+.show{
+    opacity: 1;
+}
+.icon{
+    animation: rotate-icon 2s infinite;
+}
+@keyframes rotate-icon{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }
 
 nav{
@@ -85,7 +128,7 @@ nav .menubar_action_buttons a{
     
 }
 nav .menubar_action_buttons a:hover{
-    color:white;
+    color:var(--orange);
     padding: 8px 16px;
     background-color: var(--green);
     border-radius: 32px;
@@ -172,9 +215,9 @@ nav .menubar_button a:hover{
     width: 100%;
 color: black;
     text-align: center;
-    transition: 0.3s;
+    transition: 1s;
     justify-content: center;
-    padding: 16px 32px;
+    padding: 32px 32px;
     align-items: center;
 }
 .nav-menu li{
@@ -207,13 +250,12 @@ a{
     flex-direction: row;
     padding:48px 72px;
     align-items: center;
-    background: white;
+    background-color: white;
     
     
     
 }
 section .hero_section_text {
-
     width: 60%;
 }
 section .hero_section_text h1{
@@ -225,6 +267,21 @@ section .hero_section_image{
 section .hero_section_image img{
     width: 100%;
 }
+
+.moving-text{
+    display: inline-block;
+    animation: moveText 2s infinite;
+    color: #fd7e14;
+    
+}
+@keyframes moveText {
+    0% { transform: translateY(0%); opacity: 1; }
+    45% { transform: translateY(-20%); opacity: 0; }
+    50% { transform: translateY(100%); opacity: 0; }
+    95% { transform: translateY(0%); opacity: 1; }
+}
+
+
 @media(max-width:980px){
     .introduction{
         display: flex;
@@ -248,6 +305,18 @@ section .hero_section_image img{
     }
     section .hero_section_image img{
         width: 100%;
+    }
+    .moving-text{
+        display: inline-block;
+        animation: moveText 2.2s infinite;
+        color: #fd7e14;
+        
+    }
+    @keyframes moveText {
+        0% { transform: translateY(0%); opacity: 1; }
+        45% { transform: translateY(-100%); opacity: 0; }
+        50% { transform: translateY(100%); opacity: 0; }
+        95% { transform: translateY(0%); opacity: 1; }
     }
 }
 @media(max-width:800px){
@@ -281,9 +350,17 @@ section .hero_section_image img{
 }
 @media(max-width:620px){
     .introduction{
-        background-image: url('/Images/Group\ 11.png');
+        background-image: url("../Images/Group\ 11.png");
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
+        background-position:bottom;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color:#052e3fd0;
+        background-blend-mode: multiply;
+
         
     }
     section .hero_section_text {
@@ -291,7 +368,8 @@ section .hero_section_image img{
         width: 100%;
     }
     section .hero_section_text h1{
-        font-size: 38px;
+        font-size: 48px;
+        color:white;
     }
     section .hero_section_image{
         width: 50%;
@@ -299,23 +377,28 @@ section .hero_section_image img{
     }
 }
 @media(max-width:468px){
+    
     .introduction{
-        
-        padding:48px 32px;
-        align-items: center;
-        background-image: url('/Images/Group\ 11.png');
+        background-image: url("../Images/Group\ 11.png");
         background-repeat: no-repeat;
-        background-size: cover;
-        text-align: center;
-        
+        background-size: contain;
+        background-position:bottom;
+        height: 75vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color:#052e3fd0;
+        background-blend-mode: multiply;
+        padding:32px 16px;
+                
         
     }
     section .hero_section_text {
-     text-align: center;
+     text-align: top;
         width: 100%;
     }
     section .hero_section_text h1{
-        font-size: 36px;
+        font-size: 32px;
     }
     section .hero_section_image{
         width: 40%;
@@ -324,6 +407,18 @@ section .hero_section_image img{
     section .hero_section_image img{
         width: 100%;
         display: none;
+    }
+    .moving-text{
+        display: inline-block;
+        animation: moveText 2.2s infinite;
+        color: #fd7e14;
+        
+    }
+    @keyframes moveText {
+        0% { transform: translateY(0%); opacity: 1; }
+        45% { transform: translateY(-100%); opacity: 0; }
+        50% { transform: translateY(100%); opacity: 0; }
+        95% { transform: translateY(0%); opacity: 1; }
     }
 }
 
@@ -363,7 +458,7 @@ nav{
 @media(max-width:468px){
     .about_us{
         margin-top: 80px;
-        padding:48px 32px;
+        padding:48px 16px;
         background-color: var(--green);
         color: white;
     }
@@ -431,11 +526,11 @@ width: 500px;
 }
 @media(max-width:468px){
     .saas_solution{
-        margin-top: 80px;
+        margin-top: 32px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 48px 32px;
+        padding: 48px 16px;
         gap: 24px;
         align-items: center;
     }
@@ -838,10 +933,10 @@ width: 60%;
 }
 @media(max-width:468px){
     .our_services{
-        padding: 48px 32px;
+        padding: 48px 16px;
         background-color: var(--green);
         color: white;
-        margin-top: 80px;
+        margin-top: 32px;
     }
     .list_of_services{
         display: flex;
@@ -1033,7 +1128,7 @@ width: 60%;
     margin-top: 108px;
     padding: 48px 80px;
     align-items: center;
-    background-color: #ddf3fd39;
+    
 }
 .market .market_text{
     display: flex;
@@ -1048,6 +1143,7 @@ width: 60%;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5%;
+    align-items: center;
 }
 .market_2 .market_image{
     width: 40%;
@@ -1060,7 +1156,7 @@ width: 60%;
     width: 55%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 24px;
 }
 .market_2 .market_zones .market_zone{
     display: flex;
@@ -1077,7 +1173,7 @@ width: 60%;
             margin-top: 96px;
             padding: 48px 64px;
             align-items: center;
-            background-color: #ddf3fd39;;
+            
         }
         .market .market_text{
             display: flex;
@@ -1148,10 +1244,10 @@ width: 60%;
     }
     @media(max-width:468px){
         .market{
-            margin-top: 80px;
-            padding: 48px 32px;
+            margin-top: 32px;
+            padding: 48px 16px;
             align-items: center;
-            background-color: #ddf3fd39;;
+            
         }
         .market .market_text{
             display: flex;
@@ -1197,9 +1293,9 @@ width: 60%;
 
     /*chrivon*/
     .chrivon{
-        margin-top: 108px;
+        margin-top: 60px;
         align-items: center;
-        margin: 48px 80px;
+        padding: 48px 80px;
         
     }
     .chrivon .chrivon_text{
@@ -1209,7 +1305,7 @@ width: 60%;
         align-items: center;
         text-align: center;
         gap: 16px;
-        margin-bottom: 48px;
+        margin-bottom: 24px;
     }
     .chrivon .chrivon_text h2{
     font-size: 40px;
@@ -1225,12 +1321,12 @@ width: 60%;
     gap: 10%;
 }
 .chrivon .chrivon_2 .chrivon_2_text{
-    width: 50%;
+    width: 45%;
     text-align: justify;
     font-size: 16px;
 }
 .chrivon .chrivon_2 .chrivon_2_image{
-    width: 40%;
+    width: 45%;
 }
 .chrivon .chrivon_2 .chrivon_2_image img{
     width: 100%;
@@ -1240,7 +1336,7 @@ width: 60%;
     .chrivon{
         margin-top: 96px;
         align-items: center;
-        margin: 48px 64px;
+        padding: 48px 64px;
         
     }
     .chrivon .chrivon_text{
@@ -1284,9 +1380,10 @@ width: 60%;
 }
 @media(max-width:468px){
     .chrivon{
-        margin-top: 80px;
+        margin-top: -16px;
         align-items: center;
-        margin: 48px 32px;
+        padding: 48px 16px;
+        
         
     }
     .chrivon .chrivon_text{
@@ -1331,7 +1428,7 @@ width: 60%;
 .meet_the_team{
     padding: 48px 80px;
     align-items: center;
-    margin-top: 108px;
+    margin-top: 60px;
 }
 .meet_the_team .team_text_image{
     display: flex;
@@ -1365,7 +1462,7 @@ width: 60%;
 .team_text_image_2 .team_text_ceo img{
     width: 200px;
     height: 200px;
-    border-radius: 100%;
+
 }
 @media(max-width:980px){
     .meet_the_team{
@@ -1412,14 +1509,15 @@ width: 60%;
     .team_text_image_2 .team_text_ceo img{
         width: 200px;
         height: 200px;
-        border-radius: 100%;
+        
     }
 }
 @media(max-width:468px){
     .meet_the_team{
-        padding: 48px 32px;
+        padding: 48px 16px;
         align-items: center;
-        margin-top: 80px;
+        margin-top: -16px;
+        
     }
     .meet_the_team .team_text_image{
         display: flex;
@@ -1455,13 +1553,13 @@ width: 60%;
     .team_text_image_2 .team_text_ceo img{
         width: 220px;
         height: 220px;
-        border-radius: 100%;
+        
     }   
 }
 
 /* join us */
 .join_us{
-    margin-top: 108px;
+    margin-top: 60px;
     padding: 48px 80px;
 }
 .join_heading{
@@ -1624,10 +1722,12 @@ width: 60%;
         height: 300px;
     }
 }
+
 @media(max-width:468px){
     .join_us{
-        margin-top: 80px;
-        padding: 48px 32px;
+        margin-top: -16px;
+        padding: 48px 16px;
+        
     }
     .join_heading{
         text-align: center;
@@ -1702,7 +1802,7 @@ width: 60%;
 /* form*/
 .form{
     width: 100%;
-    margin-top: 108px;
+    margin-top: 36px;
     padding: 48px 80px;
 }
 .form_box{
@@ -1753,7 +1853,7 @@ font-size: 16px;
     padding: 0 35px 0 5px;
 }
 .btn{
-    width: 50%;
+    width: 35%;
     height: 48px;
     outline: none;
     border: none;
@@ -1768,6 +1868,13 @@ font-size: 16px;
 }
 .btn:hover{
     background-color: black;
+    color: var(--orange);
+}
+.btn a{
+    color: white;
+    text-decoration: none;
+}
+.btn a:hover{
     color: var(--orange);
 }
 
@@ -1791,8 +1898,8 @@ font-size: 16px;
 @media(max-width:468px){
     .form{
         width: 100%;
-        margin-top: 80px;
-        padding: 0px 32px;
+        margin-top: -40px;
+        padding: 0px 16px;
     }
     .form_box{
        width: 100%; 
@@ -1815,6 +1922,9 @@ font-size: 16px;
             font-weight: 400;
             padding: 0 35px 0 5px;
         }
+        .btn{
+            width: 50%;
+            height: 42px;}
 }
 
 /* footer*/
@@ -1825,7 +1935,7 @@ font-size: 16px;
     flex-direction: row;
     gap: 20%;
     color: white;
-    margin-top: 108px;
+    margin-top: 60px;
     
 }
 .footer .image_logo{
@@ -1880,8 +1990,8 @@ font-size: 16px;
     font-size: 16px;
     text-align: justify;
 }
-.footer .contact .text .paragraph a{
-    color: #0000ff;
+.footer .contact .text .paragraph p a{
+    color: white;
 }
 .footer .socials .fa-linkedin-in{
     color: var(--linkedin);
@@ -1990,11 +2100,12 @@ font-size: 16px;
 @media(max-width:468px){
     .footer{
         background-color: var(--green);
-        padding: 48px 32px;
+        padding: 48px 16px;
         display: flex;
         flex-direction: row;
         gap: 13%;
         color: white;
+        margin-top: 64px;
         
     }
     .footer .image_logo{
